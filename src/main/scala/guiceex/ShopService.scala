@@ -9,11 +9,11 @@ class ShopService @Inject()(private[this] val orderService: OrderService) {
   def search(ids: ItemId*) = orderService.searchOrdered(ids: _*)
 }
 
-//# Trivial scala-based abstraction and DSL via implicit extension from Guice.
+// Trivial scala-based abstraction and DSL via implicit extension from Guice.
 
 class ShopModule extends Module {
   override def configure(): Unit =
-    //# Default provider: bind[OrderService].to[OrderServiceImpl].in[Singleton]
+    // Default provider: bind[OrderService].to[OrderServiceImpl].in[Singleton]
     bind[OrderService].toProvider[OrderServiceProvider].in[Singleton]
 }
 

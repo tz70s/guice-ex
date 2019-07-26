@@ -29,7 +29,7 @@ abstract class Module extends AbstractModule {
   }
 
   implicit class ExtendScopedBindingBuilder(builder: ScopedBindingBuilder) {
-    def in[M <: Annotation: ClassTag] = {
+    def in[M <: Annotation: ClassTag]: Unit = {
       val clazz = implicitly[ClassTag[M]].runtimeClass.asInstanceOf[Class[M]]
       builder.in(clazz) // this is a mutated operation?
     }
